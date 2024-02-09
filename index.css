@@ -1,0 +1,144 @@
+/* 
+    TODO - Accesibility
+    Add toggle button to turn off animations.
+    Implement localStorage on it.
+*/
+
+:root {
+    --black: #151618;
+    --black-faint: #bbb;
+    --white: #fff;
+    --primary-color: rgb(112, 61, 253);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--white);
+    color: var(--black);
+    fill: var(--black);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1024px;
+    margin: auto;
+}
+
+form {
+    flex: 1 1 200px;
+    max-width: 768px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.15);
+}
+
+form fieldset {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    border: none;
+    outline: none;
+}
+
+form h2 {
+    color: var(--primary-color);
+}
+
+form label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+}
+
+form *[type="submit"] {
+    margin: .5rem 0;
+    padding: .5rem;
+    background-color: inherit;
+    color: inherit;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    color: var(--primary-color);
+}
+
+form *[type="submit"]:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+ 
+form *[type="submit"]:focus {
+    outline: 1px solid var(--primary-color);
+}
+
+form label span {
+    flex: 0 0 175px;
+}
+
+/*  
+    https://developer.mozilla.org/en-US/docs/Learn/Forms/UI_pseudo-classes
+    https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+    https://developer.mozilla.org/en-US/docs/Learn/Forms/Advanced_form_styling
+    https://developer.mozilla.org/en-US/docs/Learn/Forms/Property_compatibility_table_for_form_controls
+*/
+form label input[type='text'], 
+form label input[type='email'], 
+form label input[type='password'], 
+form label input[type='search'] {
+    appearance: none;
+}
+
+form label input, 
+form label textarea {
+    flex: 1 1 300px;
+    padding: .5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    outline: none;
+}
+
+form label .input-section {
+    flex: 1 1 300px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+form label input:focus, 
+form label textarea:focus {
+    outline: 1px solid var(--primary-color);
+}
+
+form label button.toggle-password-visibility {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    fill: var(--black-faint);
+}
+form label button.toggle-password-visibility:hover, 
+form label button.toggle-password-visibility:focus {
+    fill: var(--primary-color);
+}
