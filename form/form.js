@@ -96,6 +96,7 @@ document.querySelectorAll("form label:has(input[type='password']) button").forEa
  * Prevent form submit on signup form.
  * Handle custom signup.
  * https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+ * https://developer.mozilla.org/es/docs/Web/API/FormData
  */
 document.querySelectorAll("form").forEach(form => {
     form.addEventListener("submit", (ev) => {
@@ -104,8 +105,31 @@ document.querySelectorAll("form").forEach(form => {
 
             const formData = new FormData(ev.target);
 
-            console.log("Signup form data:", formData);
+            for (input of formData) {
+                console.log(input);
+            }
 
         } catch (error) {}
     });
-})
+});
+
+document.querySelector("input[name='repeat-password']").addEventListener("input", (ev) => {
+    try {
+        const target = ev.target;
+        const password = document.querySelector("input[name='password']");
+
+        if (target.value.length < 6 || target.value.length > 99) {
+            target.setCustomValidity("");
+            return;
+        }
+
+        console.log(target.value !== password.value, target.value, password.value);
+
+        if (target.value !== password.value) {
+            target.setCustomValidity("Both passwords must match");
+        } else {
+            target.setCustomValidity("");
+        }
+
+    } catch (error) {}
+});

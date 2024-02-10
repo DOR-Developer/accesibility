@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- TODO : Add meta tags -->
+    <!-- 
+        Most important meta tags.
+        Allows the website to show properly when referenced on other sites.
+    -->
+    <meta property="og:title" content="Form Accessibility" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dordev.es/accesibility/form" />
+    <meta property="og:image" content="https://dordev.es/images/dordev.png" />
+    <meta property="og:description" content="Best Accessibility Practices Applied to HTML5 Forms." />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="description" content="Best Accessibility Practices Applied to HTML5 Forms.">
 
-    <title>Document</title>
-    <link rel="stylesheet"  href="index.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Form Accessibility</title>
+    <link rel="stylesheet"  href="form.css">
 </head>
 <body>
     
@@ -41,16 +50,19 @@
                         value=""
                         required/>
                 </label>
+                <small><i>* Full name must have between 3 and 50 characters.</i></small>
                 <label>
                     <span>Email</span>
                     <input 
                         type="email" 
+                        minlength="10"
                         maxlength="99"
                         name="email" 
                         autocomplete="email" 
                         placeholder="Input your email..." 
                         required />
                 </label>
+                <small><i>* Email must match an expected format and have between 10 and 99 characters.</i></small>
                 <label>
                     <span>Password</span>
                     <div class="input-section">
@@ -68,6 +80,7 @@
                         </button>
                     </div>
                 </label>
+                <small><i>* Password must have between 6 and 99 characters.</i></small>
                 <label>
                     <span>Repeat Password</span>
                     <div class="input-section">
@@ -85,11 +98,12 @@
                         </button>
                     </div>
                 </label>
+                <small><i>* Both passwords must match.</i></small>
             </fieldset>
             <button type="submit" name="sign-up">Sign Up</button>
         </form>
     </main>
 
-    <script src="./index.js"></script>
+    <script src="./form.js"></script>
 </body>
 </html>

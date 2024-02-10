@@ -5,10 +5,16 @@
 */
 
 :root {
-    --black: #151618;
-    --black-faint: #bbb;
-    --white: #fff;
-    --primary-color: rgb(112, 61, 253);
+    --black: 21, 22, 24;
+    --white: 255, 255, 255;
+    --primary-color: 112, 61, 253;
+    --error: 233, 76, 61;
+}
+
+
+*::selection {
+    background-color: rgb(var(--primary-color));
+    color: rgb(var(--white));
 }
 
 * {
@@ -20,9 +26,9 @@
 
 body {
     min-height: 100vh;
-    background-color: var(--white);
-    color: var(--black);
-    fill: var(--black);
+    background-color: rgb(var(--white));
+    color: rgb(var(--black));
+    fill: rgb(var(--black));
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -59,7 +65,7 @@ form fieldset {
 }
 
 form h2 {
-    color: var(--primary-color);
+    color: rgb(var(--primary-color));
 }
 
 form label {
@@ -74,20 +80,20 @@ form *[type="submit"] {
     padding: .5rem;
     background-color: inherit;
     color: inherit;
-    border: 1px solid var(--primary-color);
+    border: 1px solid rgb(var(--primary-color));
     border-radius: 5px;
     cursor: pointer;
     outline: none;
-    color: var(--primary-color);
+    color: rgb(var(--primary-color));
 }
 
 form *[type="submit"]:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: rgb(var(--primary-color));
+    color: rgb(var(--white));
 }
  
 form *[type="submit"]:focus {
-    outline: 1px solid var(--primary-color);
+    outline: 1px solid rgb(var(--primary-color));
 }
 
 form label span {
@@ -111,9 +117,27 @@ form label input,
 form label textarea {
     flex: 1 1 300px;
     padding: .5rem;
-    border: 1px solid var(--primary-color);
+    border: 1px solid rgb(var(--primary-color));
     border-radius: 5px;
     outline: none;
+}
+
+form label input:focus, 
+form label textarea:focus {
+    outline: 1px solid rgb(var(--primary-color));
+}
+
+form label input:invalid, 
+form label textarea:invalid {
+    border-color: rgb(var(--error));
+    outline-color: rgb(var(--error));
+}
+
+form small {
+    line-height: 1.35rem;
+}
+form label:has(input:valid) + small {
+    display: none;
 }
 
 form label .input-section {
@@ -121,11 +145,6 @@ form label .input-section {
     display: flex;
     gap: 1rem;
     align-items: center;
-}
-
-form label input:focus, 
-form label textarea:focus {
-    outline: 1px solid var(--primary-color);
 }
 
 form label button.toggle-password-visibility {
@@ -136,9 +155,11 @@ form label button.toggle-password-visibility {
     align-items: center;
     cursor: pointer;
     outline: none;
-    fill: var(--black-faint);
+    fill: rgb(var(--black), .35);
 }
-form label button.toggle-password-visibility:hover, 
 form label button.toggle-password-visibility:focus {
-    fill: var(--primary-color);
+    fill: rgba(var(--black), .5);
+}
+form label button.toggle-password-visibility:hover {
+    fill: rgb(var(--primary-color));
 }
