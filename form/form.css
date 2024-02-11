@@ -50,18 +50,29 @@ form {
     gap: 1rem;
     border-radius: 8px;
     padding: 1rem 2rem;
-    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 8px 4px rgba(var(--black), 0.15);
 }
 
 form fieldset {
-    flex: 1 1 auto;
-    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
     gap: 1rem;
-    border: none;
-    outline: none;
+    padding: .5rem;
+    border-radius: 5px;
+    border: 1px solid rgba(var(--black), .35);
+}
+form fieldset label {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    padding: .25rem;
+    border-radius: 5px;
+    justify-content: center;
+}
+form fieldset label span {
+    flex: 0 0 auto;
+}
+form fieldset label input {
+    flex: 0 0 auto;
 }
 
 form h2 {
@@ -122,15 +133,22 @@ form label textarea {
     outline: none;
 }
 
-form label input:focus, 
+form label input:not([type='radio']):focus, 
 form label textarea:focus {
+    outline: 1px solid rgb(var(--primary-color));
+}
+
+form label input[type='radio'] {
+    accent-color: rgb(var(--primary-color));
+}
+form label:has(input[type='radio']:focus) {
     outline: 1px solid rgb(var(--primary-color));
 }
 
 form label input:invalid, 
 form label textarea:invalid {
     border-color: rgb(var(--error));
-    outline-color: rgb(var(--error));
+    outline-color: rgb(var(--error)) !important;
 }
 
 form small {
@@ -157,9 +175,8 @@ form label button.toggle-password-visibility {
     outline: none;
     fill: rgb(var(--black), .35);
 }
-form label button.toggle-password-visibility:focus {
-    fill: rgba(var(--black), .5);
-}
+
+form label button.toggle-password-visibility:focus, 
 form label button.toggle-password-visibility:hover {
     fill: rgb(var(--primary-color));
 }

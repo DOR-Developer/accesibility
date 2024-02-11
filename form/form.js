@@ -65,11 +65,16 @@
  * password fields using a button.
  * The button needs to be right after the input.
  */
-document.querySelectorAll("form label:has(input[type='password']) button").forEach(button => {
-    button.addEventListener("mouseup", (ev) => {
+document.querySelectorAll(".toggle-password-visibility").forEach(button => {
+    ["mouseup", "keydown"].forEach(event => button.addEventListener(event, (ev) => {
+        ev.preventDefault();
         try {
             const button = ev.target.closest('button');
             const input = button.previousElementSibling;
+
+            if (event === "keydown" && ev.keyCode !== 32) {
+                return;
+            }
 
             if (input.tagName === "INPUT") {
                 const inputType = input.type;
@@ -89,7 +94,7 @@ document.querySelectorAll("form label:has(input[type='password']) button").forEa
             }
 
         } catch (error) {}
-    });
+    }));
 })
 
 /**
@@ -113,17 +118,20 @@ document.querySelectorAll("form").forEach(form => {
     });
 });
 
-document.querySelector("input[name='repeat-password']").addEventListener("input", (ev) => {
+/**
+ * Repeat password validation on input.
+ * Implements previous validation.
+ * Both passwords need to match.
+ */
+document.querySelector("input[name='Repeat-password']").addEventListener("input", (ev) => {
     try {
         const target = ev.target;
-        const password = document.querySelector("input[name='password']");
+        const password = document.querySelector("input[name='Password']");
 
         if (target.value.length < 6 || target.value.length > 99) {
             target.setCustomValidity("");
             return;
         }
-
-        console.log(target.value !== password.value, target.value, password.value);
 
         if (target.value !== password.value) {
             target.setCustomValidity("Both passwords must match");

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 
+        Most important meta tags.
+        Allows the website to show properly when referenced on other sites.
+    -->
+    <meta property="og:title" content="Range Widgets" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dordev.es/accesibility/range" />
+    <meta property="og:image" content="https://dordev.es/images/dordev.png" />
+    <meta property="og:description" content="Best Accessibility Practices Applied to different HTML5 Range Widgets." />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="description" content="Best Accessibility Practices Applied to different HTML5 Range Widgets.">
+
+    <title>Range Widgets</title>
+    <link rel="stylesheet" href="range.css">
+</head>
+<body>
+    <!--
+        https://www.w3.org/WAI/ARIA/apg/practices/range-related-properties/
+    -->
+    <main>
+        <!--
+            Can program loading progress wtih setInterval()
+        -->
+        <label>
+            <span>Loading</span>
+            <progress max="100" value="0"></progress>
+        </label>
+
+        <!--
+            What even is this input used for?
+            User satisfaction? Ratings? I guess...
+        -->
+        <label>
+            <span>Slider</span>
+            <input type="range" min="50" value="68" max="100" aria-label="Temperature (F)">
+        </label>
+
+        <!-- 
+            You're better off leaving it's default styles.
+            Too much of a headache to style and program custom number input.
+        -->
+        <label>
+            <span>Price per paperclip</span>
+            <button>-</button>
+            <input name="price-paperclip" type="number" min="0.01" value="0.5" max="2" step="0.10">
+            <button>+</button>
+        </label>
+    </main>
+
+    <script src="range.js"></script>
+</body>
+</html>
